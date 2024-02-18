@@ -5,7 +5,7 @@ ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/release
 RUN mvn -f pom.xml clean package
 
 # Stage 3: Combine React and Spring Boot apps
-FROM mavenL3.8.4-openjdk-17-slim
+FROM maven:3.8.4-openjdk-17-slim
 RUN mkdir -p /opt/app
 RUN ls -ltr
 COPY --from=spring-build /usr/src/app/example/target/example-0.0.1-1.jar /opt/app/app.jar
