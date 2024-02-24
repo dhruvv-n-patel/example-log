@@ -11,4 +11,4 @@ RUN ls -ltr
 COPY --from=spring-build /usr/src/app/example/target/example-0.0.1-1.jar /opt/app/app.jar
 COPY --from=spring-build --chmod=777 /usr/src/app/example/opentelemetry-javaagent.jar /opt/app/opentelemetry-javaagent.jar
 EXPOSE 8080
-CMD ["java","-javaagent:/opt/app/opentelemetry-javaagent.jar", "-jar", "/opt/app/app.jar"]
+CMD ["java", "-jar", "/opt/app/app.jar"]
