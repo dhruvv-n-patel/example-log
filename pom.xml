@@ -71,6 +71,14 @@
                 <target>17</target>
             </configuration>
         </plugin>
+        <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+            <mainClass>com.obsTask.example.ExampleApplication</mainClass>
+            <layout>JAR</layout>
+        </configuration>
+    </plugin>
 		</plugins>
 	</build>
 
