@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @EnableScheduling
-@ComponentScan(basePackages = {"com.obsTask.Logging"})
+@ComponentScan(basePackages = {"com.obsTask.Logging","com.obsTask.controller"})
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class ExampleApplication {
 
