@@ -7,6 +7,9 @@ on:
         description: 'Branch name'
         required: true
         default: 'main'  # Default branch name
+      tag:
+        description: 'Enter the tag for the Docker image'
+        required: true
 
 jobs:
   build-and-push:
@@ -26,12 +29,11 @@ jobs:
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Build and push Docker image
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/example-tool
-          IMAGE_TAG: latest
-        run: |
-          docker buildx create --use
-          docker buildx build --platform linux/amd64,linux/arm64 -t $IMAGE_NAME:$IMAGE_TAG . --push
+      - name: Build Docker image
+        run: docker build -t my_image .
+
+      - name: Tag Docker image
+        run: docker tag my_image ${{secrets.DOCKER_USERNAME}}/my_image:${{github.event.inputs.tag}}
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/my_image:${{github.event.inputs.tag}}
