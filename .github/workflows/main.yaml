@@ -27,10 +27,10 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Build Docker image
-        run: docker build -t my_image .
+        run: docker build -t examplelog .
 
       - name: Tag Docker image
-        run: docker tag my_image ${{secrets.DOCKER_USERNAME}}/my_image:${{github.event.inputs.tag}}
+        run: docker tag examplelog ${{secrets.DOCKER_USERNAME}}/examplelog:${{github.event.inputs.tag}}
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/my_image:${{github.event.inputs.tag}}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/examplelog:${{github.event.inputs.tag}}
