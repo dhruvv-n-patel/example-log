@@ -18,10 +18,6 @@ public class ExampleApplication {
 		Logger logger 
         = Logger.getLogger( 
             ExampleApplication.class.getName()); 
-		logger.info("This is message 1"); 
-        logger.info("This is message 2"); 
-        logger.info("This is message 3"); 
-        logger.info("This is message 4"); 
         
         
 	}
